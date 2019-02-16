@@ -1,0 +1,61 @@
+
+{% extends "base.html" %}
+
+{% block titleblock %}
+  <title>ZenTEx - Extraction</title>
+{% endblock %}
+
+{% block content %}
+  <!-- Breadcrumbs-->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="index.html">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active">Extraction Tool</li>
+  </ol>
+  <!-- Page Content -->
+  <h1>Extraction Tool</h1>
+  <hr>
+  <form action="{{ url_for('zextractor') }}" method="POST" enctype="multipart/form-data" id="file-uploader">
+    <div class="input-default-wrapper mt-3 form-group">
+
+      <input type="file" id="file-with-current" class="input-default-js" name="file">
+
+    </div>
+    <div class="btn-group btn-group-toggle form-group" data-toggle="buttons">
+      <label class="btn btn-secondary active">
+        <input type="radio" name="filters" id="option1" value="tags" autocomplete="off" checked> Tags
+      </label>
+      <label class="btn btn-secondary">
+        <input type="radio" name="filters" id="option2" value="users" autocomplete="off"> Users
+      </label>
+      <label class="btn btn-secondary">
+        <input type="radio" name="filters" id="option3" value="emails" autocomplete="off"> Emails
+      </label>
+      <label class="btn btn-secondary">
+        <input type="radio" name="filters" id="option4" value="comments" autocomplete="off"> Comments
+      </label>
+    </div> <br />
+    <div class="form-group">
+      <input class="btn btn-dark" type="submit" value="Extract" />
+      </div>
+    </form>
+    <div class="success-response">
+        <h4>{{ msg }}</h4>
+      </div>
+
+    <div class="card mb-3">
+      <div class="card-header">
+        <i class="fas fa-table"></i>
+        Output Table</div>
+        <div class="card-body">
+          <div class="table-responsive table-wrapper-scroll-x height-limiter" style="max-height:20rem;overflow:scroll;">
+            {{ table | safe }}
+            </div>
+          </div>
+      </div>
+
+
+
+
+{% endblock %}

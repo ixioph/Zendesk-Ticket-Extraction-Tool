@@ -1,0 +1,62 @@
+
+{% extends "base.html" %}
+
+{% block titleblock %}
+  <title>ZenTEx - Parser</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+{% endblock %}
+
+{% block content %}
+  <!-- Breadcrumbs-->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="index.html">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active">Parse Tool</li>
+  </ol>
+  <!-- Page Content -->
+  <h1>Parse Tool</h1>
+  <hr>
+  <form action="{{ url_for('zparser') }}" method="POST" enctype="multipart/form-data" id="file-uploader">
+    <div class="input-default-wrapper mt-3 form-group">
+
+      <input type="file" id="file-with-current" class="input-default-js" name="file">
+
+    </div>
+    <div class="btn-group btn-group-toggle form-group" data-toggle="buttons">
+      <label class="btn btn-secondary active">
+        <input type="radio" name="filters" id="option1" value="default" autocomplete="off" checked> Default
+      </label>
+      <label class="btn btn-secondary">
+        <input type="radio" name="filters" id="option2" value="custom" autocomplete="off"> Custom
+      </label>
+    </div> <br />
+    <div class="form-group"> Parse Div Form Group
+      <label for="column-omit">Omit the following columns: <br />
+        <textarea readonly class="form-control" id="column-omit" rows="3">{{ omit }}</textarea>
+        </label>
+      </div>
+    <div class="form-group">
+      <input class="btn btn-dark" type="submit" value="Parse" />
+      </div>
+
+    </form>
+    <div class="success-response">
+        <h4>{{ msg }}</h4>
+      </div>
+
+    <div class="card mb-3">
+      <div class="card-header">
+        <i class="fas fa-table"></i>
+        Output Table</div>
+        <div class="card-body">
+          <div class="table-responsive table-wrapper-scroll-x height-limiter" style="max-height:20rem;overflow:scroll;">
+            {{ table | safe }}
+            </div>
+          </div>
+      </div>
+
+
+
+
+{% endblock %}
