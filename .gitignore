@@ -1,0 +1,18 @@
+#python specific
+*.pyc
+
+#testing resources
+test
+*.json
+.ipynb_checkpoints/
+*.ipynb
+
+
+## generic files to ignore
+*~
+*.lock
+*.DS_Store
+*.swap
+*.out
+*.ini
+*.csv

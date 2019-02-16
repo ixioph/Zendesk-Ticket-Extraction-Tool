@@ -1,0 +1,6 @@
+//Additional styling, outside of bootstrap sb-admin defaults...
+
+.height-limiter {
+  max-height: 20rem;
+  overflow: scroll;
+}
